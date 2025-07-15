@@ -1,2 +1,2 @@
-# mathrecreation.github.io
-Repository for github.io pages
+Desmos Polygonal Number diagrams
+[Desmos Polygonal Number diagrams](/desmosPolygonal)
