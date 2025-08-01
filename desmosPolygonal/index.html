@@ -2,7 +2,7 @@
 <head>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <title>Desmos Polygonal Number Diagrams</title>
-<!--Generated on Tue Jul 15 03:07:01 2025 by LaTeXML (version 0.8.8) http://dlmf.nist.gov/LaTeXML/.-->
+<!--Generated on Fri Aug  1 01:13:40 2025 by LaTeXML (version 0.8.8) http://dlmf.nist.gov/LaTeXML/.-->
 <style>:root { --bml-ltx-font-size: 10; }</style>
 <link rel="stylesheet" href="LaTeXML.css" type="text/css">
 <link rel="stylesheet" href="ltx-report.css" type="text/css">
@@ -18,11 +18,6 @@
 <link rel="stylesheet" href="bmluser/colors.gitbook-main.css" type="text/css">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6"></script>
-<link rel="next" href="Ch0.Sx1.html" title="Polygonal numbers ‣ Desmos Polygonal Number Diagrams">
-<link rel="section" href="Ch0.Sx1.html" title="Polygonal numbers ‣ Desmos Polygonal Number Diagrams">
-<link rel="section" href="Ch0.Sx2.html" title="Placing any 𝑛 in a 𝑘-polygonal diagram ‣ Desmos Polygonal Number Diagrams">
-<link rel="section" href="Ch0.Sx3.html" title="Drawing the diagram ‣ Desmos Polygonal Number Diagrams">
-<link rel="section" href="Ch0.Sx4.html" title="Building in Desmos ‣ Desmos Polygonal Number Diagrams">
 </head>
 <body>
 <div class="book without-animation with-summary font-size-2 font-family-1 bml-no-navtoc" data-basepath=".">
@@ -49,28 +44,365 @@
 <p class="ltx_p">Polygonal numbers, like the triangular, square, and pentagonal numbers, are closely identified with (or even defined in terms of) the diagrams that they are associated with. The functional programming capabilities of the Desmos graphing calculator provides fun and interesting ways of exploring number diagrams like those associated with polygonal numbers. This short article provides one approach that can be used to build polygonal number diagrams in Desmos.</p>
   
 </div>
-<nav class="ltx_TOC">
-<ol class="ltx_toclist ltx_toclist_document">
-<li class="ltx_tocentry"><a href="Ch0.Sx1.html" title="In Desmos Polygonal Number Diagrams" class="ltx_ref"><span class="ltx_text ltx_ref_title">Polygonal numbers</span></a></li>
-</ol></nav>
-<nav class="ltx_TOC">
-<ol class="ltx_toclist ltx_toclist_document">
-<li class="ltx_tocentry"><a href="Ch0.Sx2.html" title="In Desmos Polygonal Number Diagrams" class="ltx_ref"><span class="ltx_text ltx_ref_title">Placing any <math class="ltx_Math" alttext="n" display="inline"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math> in a <math class="ltx_Math" alttext="k" display="inline"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>-polygonal diagram</span></a></li>
-</ol></nav>
-<nav class="ltx_TOC">
-<ol class="ltx_toclist ltx_toclist_document">
-<li class="ltx_tocentry"><a href="Ch0.Sx3.html" title="In Desmos Polygonal Number Diagrams" class="ltx_ref"><span class="ltx_text ltx_ref_title">Drawing the diagram</span></a></li>
-</ol></nav>
-<nav class="ltx_TOC">
-<ol class="ltx_toclist ltx_toclist_document">
-<li class="ltx_tocentry"><a href="Ch0.Sx4.html" title="In Desmos Polygonal Number Diagrams" class="ltx_ref"><span class="ltx_text ltx_ref_title">Building in Desmos</span></a></li>
-</ol></nav>
+<section id="Ch0.Sx1" class="ltx_section normal">
+<div class="section level1">
+
+<h1 class="ltx_title ltx_title_section">Polygonal numbers</h1>
+
+<div id="Ch0.Sx1.p1" class="ltx_para">
+<p class="ltx_p">For a given <math id="Ch0.Sx1.p1.m1" class="ltx_Math" alttext="k\in\mathbb{Z}^{+},k&gt;2" display="inline"><semantics><mrow><mrow><mi>k</mi><mo>∈</mo><msup><mi>ℤ</mi><mo>+</mo></msup></mrow><mo>,</mo><mrow><mi>k</mi><mo>&gt;</mo><mn>2</mn></mrow></mrow><annotation encoding="application/x-tex">k\in\mathbb{Z}^{+},k&gt;2</annotation></semantics></math>, the <math id="Ch0.Sx1.p1.m2" class="ltx_Math" alttext="k" display="inline"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>-polygonal numbers<cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib1" title="The book of numbers" class="ltx_ref">1</a>]</cite> are a recursively defined integer sequence, as shown in Equation (<a href="#Ch0.Ex2" title="In Polygonal numbers ‣ Desmos Polygonal Number Diagrams" class="ltx_ref"><span class="ltx_text ltx_ref_tag">1</span></a>).</p>
+</div>
+<div id="Ch0.Sx1.p2" class="ltx_para">
+<div class="bml-overflow-wrapper">
+<table id="Ch0.Sx4.EGx1" class="ltx_equationgroup ltx_eqn_align ltx_eqn_table">
+
+<tbody id="Ch0.Ex1"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ch0.Ex1.m1" class="ltx_Math" alttext="\displaystyle p_{k,1}" display="inline"><semantics><msub><mi>p</mi><mrow><mi>k</mi><mo>,</mo><mn>1</mn></mrow></msub><annotation encoding="application/x-tex">\displaystyle p_{k,1}</annotation></semantics></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ch0.Ex1.m2" class="ltx_Math" alttext="\displaystyle=1" display="inline"><semantics><mrow><mi></mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\displaystyle=1</annotation></semantics></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ch0.Ex2"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ch0.Ex2.m1" class="ltx_Math" alttext="\displaystyle p_{k,i}" display="inline"><semantics><msub><mi>p</mi><mrow><mi>k</mi><mo>,</mo><mi>i</mi></mrow></msub><annotation encoding="application/x-tex">\displaystyle p_{k,i}</annotation></semantics></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ch0.Ex2.m2" class="ltx_Math" alttext="\displaystyle=p_{k,i-1}+(k-2)i-(k-3)" display="inline"><semantics><mrow><mi></mi><mo>=</mo><mrow><mrow><msub><mi>p</mi><mrow><mi>k</mi><mo>,</mo><mrow><mi>i</mi><mo>−</mo><mn>1</mn></mrow></mrow></msub><mo>+</mo><mrow><mrow><mo stretchy="false">(</mo><mrow><mi>k</mi><mo>−</mo><mn>2</mn></mrow><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mi>i</mi></mrow></mrow><mo>−</mo><mrow><mo stretchy="false">(</mo><mrow><mi>k</mi><mo>−</mo><mn>3</mn></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow><annotation encoding="application/x-tex">\displaystyle=p_{k,i-1}+(k-2)i-(k-3)</annotation></semantics></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(1)</span></td>
+</tr></tbody>
+</table>
+</div>
+</div>
+<div id="Ch0.Sx1.p3" class="ltx_para">
+<p class="ltx_p">For a term in the sequence <math id="Ch0.Sx1.p3.m1" class="ltx_Math" alttext="n=p_{k,i}" display="inline"><semantics><mrow><mi>n</mi><mo>=</mo><msub><mi>p</mi><mrow><mi>k</mi><mo>,</mo><mi>i</mi></mrow></msub></mrow><annotation encoding="application/x-tex">n=p_{k,i}</annotation></semantics></math>, <math id="Ch0.Sx1.p3.m2" class="ltx_Math" alttext="n" display="inline"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math> dots can be arranged in a regular <math id="Ch0.Sx1.p3.m3" class="ltx_Math" alttext="k" display="inline"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>-polygon built up of <math id="Ch0.Sx1.p3.m4" class="ltx_Math" alttext="i" display="inline"><semantics><mi>i</mi><annotation encoding="application/x-tex">i</annotation></semantics></math> layers (traditionally referred to as <span class="ltx_text ltx_font_italic">gnomons</span>), as shown for the pentagonal numbers (<math id="Ch0.Sx1.p3.m5" class="ltx_Math" alttext="k=5" display="inline"><semantics><mrow><mi>k</mi><mo>=</mo><mn>5</mn></mrow><annotation encoding="application/x-tex">k=5</annotation></semantics></math>) of Figure (<a href="#Ch0.F1" title="Figure 1 ‣ Polygonal numbers ‣ Desmos Polygonal Number Diagrams" class="ltx_ref"><span class="ltx_text ltx_ref_tag">1</span></a>).</p>
+</div>
+<figure id="Ch0.F1" class="ltx_figure"><div class="bml-overflow-wrapper"><img src="x1.png" id="Ch0.F1.g1" class="ltx_graphics ltx_centering ltx_img_landscape" width="598" height="313" alt="Refer to caption"></div>
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">Figure 1: </span>The first few pentagonal numbers, showing first and second differences</figcaption>
+</figure>
+<div id="Ch0.Sx1.p4" class="ltx_para">
+<p class="ltx_p">If <math id="Ch0.Sx1.p4.m1" class="ltx_Math" alttext="n" display="inline"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math> is the <math id="Ch0.Sx1.p4.m2" class="ltx_Math" alttext="i" display="inline"><semantics><mi>i</mi><annotation encoding="application/x-tex">i</annotation></semantics></math>th <math id="Ch0.Sx1.p4.m3" class="ltx_Math" alttext="k" display="inline"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>-polygonal number, it can be drawn as a layered regular <math id="Ch0.Sx1.p4.m4" class="ltx_Math" alttext="k" display="inline"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>-polygon with <math id="Ch0.Sx1.p4.m5" class="ltx_Math" alttext="i" display="inline"><semantics><mi>i</mi><annotation encoding="application/x-tex">i</annotation></semantics></math> gnomon layers, as shown for the third pentagonal number <math id="Ch0.Sx1.p4.m6" class="ltx_Math" alttext="12" display="inline"><semantics><mn>12</mn><annotation encoding="application/x-tex">12</annotation></semantics></math>, <math id="Ch0.Sx1.p4.m7" class="ltx_Math" alttext="p_{5,3}=12" display="inline"><semantics><mrow><msub><mi>p</mi><mrow><mn>5</mn><mo>,</mo><mn>3</mn></mrow></msub><mo>=</mo><mn>12</mn></mrow><annotation encoding="application/x-tex">p_{5,3}=12</annotation></semantics></math>, in Figure (<a href="#Ch0.F2" title="Figure 2 ‣ Polygonal numbers ‣ Desmos Polygonal Number Diagrams" class="ltx_ref"><span class="ltx_text ltx_ref_tag">2</span></a>).</p>
+</div>
+<figure id="Ch0.F2" class="ltx_figure"><div class="bml-overflow-wrapper"><img src="x2.png" id="Ch0.F2.g1" class="ltx_graphics ltx_centering ltx_img_landscape" width="359" height="167" alt="Refer to caption"></div>
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">Figure 2: </span>Pentagonal number diagram <math id="Ch0.F2.m2" class="ltx_Math" alttext="n=12" display="inline"><semantics><mrow><mi>n</mi><mo>=</mo><mn>12</mn></mrow><annotation encoding="application/x-tex">n=12</annotation></semantics></math> with gnomons</figcaption>
+</figure>
+</div>
+</section>
+<section id="Ch0.Sx2" class="ltx_section normal">
+<div class="section level1">
+
+<h1 class="ltx_title ltx_title_section">Placing any <math id="Ch0.Sx2.m1" class="ltx_Math" alttext="n" display="inline"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math> in a <math id="Ch0.Sx2.m2" class="ltx_Math" alttext="k" display="inline"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>-polygonal diagram</h1>
+
+<div id="Ch0.Sx2.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="Ch0.Sx2.p1.m1" class="ltx_Math" alttext="n,k\in\mathbb{Z}^{+}" display="inline"><semantics><mrow><mrow><mi>n</mi><mo>,</mo><mi>k</mi></mrow><mo>∈</mo><msup><mi>ℤ</mi><mo>+</mo></msup></mrow><annotation encoding="application/x-tex">n,k\in\mathbb{Z}^{+}</annotation></semantics></math>, <math id="Ch0.Sx2.p1.m2" class="ltx_Math" alttext="k&gt;2" display="inline"><semantics><mrow><mi>k</mi><mo>&gt;</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">k&gt;2</annotation></semantics></math>. We would like to draw the <math id="Ch0.Sx2.p1.m3" class="ltx_Math" alttext="k-" display="inline"><semantics><mrow><mi>k</mi><mo>−</mo></mrow><annotation encoding="application/x-tex">k-</annotation></semantics></math>polygonal number diagram “up to” <math id="Ch0.Sx2.p1.m4" class="ltx_Math" alttext="n" display="inline"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>. If <math id="Ch0.Sx2.p1.m5" class="ltx_Math" alttext="n" display="inline"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math> happens to actually be a <math id="Ch0.Sx2.p1.m6" class="ltx_Math" alttext="k-" display="inline"><semantics><mrow><mi>k</mi><mo>−</mo></mrow><annotation encoding="application/x-tex">k-</annotation></semantics></math>polygonal number, this will be a complete diagram with <math id="Ch0.Sx2.p1.m7" class="ltx_Math" alttext="n" display="inline"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math> dots in a layered <math id="Ch0.Sx2.p1.m8" class="ltx_Math" alttext="k" display="inline"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>-polygon. Otherwise, this will be a diagram whose outer gnomon layer is incomplete.</p>
+</div>
+<div id="Ch0.Sx2.p2" class="ltx_para">
+<p class="ltx_p">Figure (<a href="#Ch0.F3" title="Figure 3 ‣ Placing any 𝑛 in a 𝑘-polygonal diagram ‣ Desmos Polygonal Number Diagrams" class="ltx_ref"><span class="ltx_text ltx_ref_tag">3</span></a>) shows hexagonal number (<math id="Ch0.Sx2.p2.m1" class="ltx_Math" alttext="k=6" display="inline"><semantics><mrow><mi>k</mi><mo>=</mo><mn>6</mn></mrow><annotation encoding="application/x-tex">k=6</annotation></semantics></math>) diagrams for the numbers 15 and 26. Because 15 actually is a hexagonal number, the diagram is complete. The diagram for 26 shows an incomplete diagram, with an incomplete outer layer.</p>
+</div>
+<figure id="Ch0.F3" class="ltx_figure"><div class="bml-overflow-wrapper"><img src="x3.png" id="Ch0.F3.g1" class="ltx_graphics ltx_centering ltx_img_landscape" width="359" height="228" alt="Refer to caption"></div>
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">Figure 3: </span>Two hexagonal diagrams (<math id="Ch0.F3.m2" class="ltx_Math" alttext="k=6" display="inline"><semantics><mrow><mi>k</mi><mo>=</mo><mn>6</mn></mrow><annotation encoding="application/x-tex">k=6</annotation></semantics></math>), 15 is hexagonal, 26 is not</figcaption>
+</figure>
+<section id="Ch0.Sx2.SSx1" class="ltx_subsection normal">
+<div class="section level2">
+
+<h2 class="ltx_title ltx_title_subsection">Finding the gnomon for <math id="Ch0.Sx2.SSx1.m1" class="ltx_Math" alttext="n" display="inline"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math> and <math id="Ch0.Sx2.SSx1.m2" class="ltx_Math" alttext="k" display="inline"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
+</h2>
+
+<div id="Ch0.Sx2.SSx1.p1" class="ltx_para">
+<p class="ltx_p">The recursive definition for <math id="Ch0.Sx2.SSx1.p1.m1" class="ltx_Math" alttext="p_{k,1}" display="inline"><semantics><msub><mi>p</mi><mrow><mi>k</mi><mo>,</mo><mn>1</mn></mrow></msub><annotation encoding="application/x-tex">p_{k,1}</annotation></semantics></math> in Equation (<a href="#Ch0.Ex2" title="In Polygonal numbers ‣ Desmos Polygonal Number Diagrams" class="ltx_ref"><span class="ltx_text ltx_ref_tag">1</span></a> yields formulas stated as a summation (<a href="#Ch0.E2" title="In Finding the gnomon for 𝑛 and 𝑘 ‣ Placing any 𝑛 in a 𝑘-polygonal diagram ‣ Desmos Polygonal Number Diagrams" class="ltx_ref"><span class="ltx_text ltx_ref_tag">2</span></a>) and a direct calculation (<a href="#Ch0.E3" title="In Finding the gnomon for 𝑛 and 𝑘 ‣ Placing any 𝑛 in a 𝑘-polygonal diagram ‣ Desmos Polygonal Number Diagrams" class="ltx_ref"><span class="ltx_text ltx_ref_tag">3</span></a>).</p>
+</div>
+<div id="Ch0.Sx2.SSx1.p2" class="ltx_para">
+<div id="Ch0.E2" class="ltx_equation ltx_eqn_div">
+<span><math id="Ch0.E2.m1" class="ltx_Math" alttext="p_{k,i}=\sum^{i}_{j=1}\left[(k-2)j-(k-3)\right]" display="block"><semantics><mrow><msub><mi>p</mi><mrow><mi>k</mi><mo>,</mo><mi>i</mi></mrow></msub><mo rspace="0.111em">=</mo><mrow><munderover><mo movablelimits="false" rspace="0em">∑</mo><mrow><mi>j</mi><mo>=</mo><mn>1</mn></mrow><mi>i</mi></munderover><mrow><mo>[</mo><mrow><mrow><mrow><mo stretchy="false">(</mo><mrow><mi>k</mi><mo>−</mo><mn>2</mn></mrow><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mi>j</mi></mrow><mo>−</mo><mrow><mo stretchy="false">(</mo><mrow><mi>k</mi><mo>−</mo><mn>3</mn></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>]</mo></mrow></mrow></mrow><annotation encoding="application/x-tex">p_{k,i}=\sum^{i}_{j=1}\left[(k-2)j-(k-3)\right]</annotation></semantics></math></span>
+            <span class="ltx_tag ltx_tag_equation ltx_align_right">(2)</span>
+            
+          
+</div>
+</div>
+<div id="Ch0.Sx2.SSx1.p3" class="ltx_para">
+<div id="Ch0.E3" class="ltx_equation ltx_eqn_div">
+<span><math id="Ch0.E3.m1" class="ltx_Math" alttext="p_{k,i}=\frac{(k-2)i(i+1)}{2}-(k-3)i" display="block"><semantics><mrow><msub><mi>p</mi><mrow><mi>k</mi><mo>,</mo><mi>i</mi></mrow></msub><mo>=</mo><mrow><mfrac><mrow><mrow><mo stretchy="false">(</mo><mrow><mi>k</mi><mo>−</mo><mn>2</mn></mrow><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mi>i</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>i</mi><mo>+</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow></mrow><mn>2</mn></mfrac><mo>−</mo><mrow><mrow><mo stretchy="false">(</mo><mrow><mi>k</mi><mo>−</mo><mn>3</mn></mrow><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mi>i</mi></mrow></mrow></mrow><annotation encoding="application/x-tex">p_{k,i}=\frac{(k-2)i(i+1)}{2}-(k-3)i</annotation></semantics></math></span>
+            <span class="ltx_tag ltx_tag_equation ltx_align_right">(3)</span>
+            
+          
+</div>
+</div>
+<div id="Ch0.Sx2.SSx1.p4" class="ltx_para">
+<p class="ltx_p">Applying the quadratic formula to solve <math id="Ch0.Sx2.SSx1.p4.m1" class="ltx_Math" alttext="n-p_{k,i}=0" display="inline"><semantics><mrow><mrow><mi>n</mi><mo>−</mo><msub><mi>p</mi><mrow><mi>k</mi><mo>,</mo><mi>i</mi></mrow></msub></mrow><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">n-p_{k,i}=0</annotation></semantics></math> provides us with</p>
+</div>
+<div id="Ch0.Sx2.SSx1.p5" class="ltx_para">
+<div id="Ch0.E4" class="ltx_equation ltx_eqn_div">
+<span><math id="Ch0.E4.m1" class="ltx_Math" alttext="g\left(n,k\right)=\frac{\left(k-4\right)+\sqrt{\left(k-4\right)^{2}+8n\left(k-%
+2\right)}}{2\left(k-2\right)}" display="block"><semantics><mrow><mrow><mi>g</mi><mo>⁢</mo><mrow><mo>(</mo><mi>n</mi><mo>,</mo><mi>k</mi><mo>)</mo></mrow></mrow><mo>=</mo><mfrac><mrow><mrow><mo>(</mo><mrow><mi>k</mi><mo>−</mo><mn>4</mn></mrow><mo>)</mo></mrow><mo>+</mo><msqrt><mrow><msup><mrow><mo>(</mo><mrow><mi>k</mi><mo>−</mo><mn>4</mn></mrow><mo>)</mo></mrow><mn>2</mn></msup><mo>+</mo><mrow><mn>8</mn><mo>⁢</mo><mi>n</mi><mo>⁢</mo><mrow><mo>(</mo><mrow><mi>k</mi><mo>−</mo><mn>2</mn></mrow><mo>)</mo></mrow></mrow></mrow></msqrt></mrow><mrow><mn>2</mn><mo>⁢</mo><mrow><mo>(</mo><mrow><mi>k</mi><mo>−</mo><mn>2</mn></mrow><mo>)</mo></mrow></mrow></mfrac></mrow><annotation encoding="application/x-tex">g\left(n,k\right)=\frac{\left(k-4\right)+\sqrt{\left(k-4\right)^{2}+8n\left(k-%
+2\right)}}{2\left(k-2\right)}</annotation></semantics></math></span>
+            <span class="ltx_tag ltx_tag_equation ltx_align_right">(4)</span>
+            
+          
+</div>
+</div>
+<div id="Ch0.Sx2.SSx1.p6" class="ltx_para">
+<p class="ltx_p">This allows us to identify the gnomon layer <math id="Ch0.Sx2.SSx1.p6.m1" class="ltx_Math" alttext="\text{gnomon}(n,k)" display="inline"><semantics><mrow><mtext>gnomon</mtext><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>n</mi><mo>,</mo><mi>k</mi><mo stretchy="false">)</mo></mrow></mrow><annotation encoding="application/x-tex">\text{gnomon}(n,k)</annotation></semantics></math> that a given <math id="Ch0.Sx2.SSx1.p6.m2" class="ltx_Math" alttext="n" display="inline"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math> will sit in within a <math id="Ch0.Sx2.SSx1.p6.m3" class="ltx_Math" alttext="k" display="inline"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>-polygonal diagram (<a href="#Ch0.E5" title="In Finding the gnomon for 𝑛 and 𝑘 ‣ Placing any 𝑛 in a 𝑘-polygonal diagram ‣ Desmos Polygonal Number Diagrams" class="ltx_ref"><span class="ltx_text ltx_ref_tag">5</span></a>).</p>
+</div>
+<div id="Ch0.Sx2.SSx1.p7" class="ltx_para">
+<div id="Ch0.E5" class="ltx_equation ltx_eqn_div">
+<span><math id="Ch0.E5.m1" class="ltx_Math" alttext="\text{gnomon}\left(n,k\right)=\text{ceil}\left(g\left(n\right)\right)" display="block"><semantics><mrow><mrow><mtext>gnomon</mtext><mo>⁢</mo><mrow><mo>(</mo><mi>n</mi><mo>,</mo><mi>k</mi><mo>)</mo></mrow></mrow><mo>=</mo><mrow><mtext>ceil</mtext><mo>⁢</mo><mrow><mo>(</mo><mrow><mi>g</mi><mo>⁢</mo><mrow><mo>(</mo><mi>n</mi><mo>)</mo></mrow></mrow><mo>)</mo></mrow></mrow></mrow><annotation encoding="application/x-tex">\text{gnomon}\left(n,k\right)=\text{ceil}\left(g\left(n\right)\right)</annotation></semantics></math></span>
+            <span class="ltx_tag ltx_tag_equation ltx_align_right">(5)</span>
+            
+          
+</div>
+</div>
+</div>
+</section>
+<section id="Ch0.Sx2.SSx2" class="ltx_subsection normal">
+<div class="section level2">
+
+<h2 class="ltx_title ltx_title_subsection">The position of <math id="Ch0.Sx2.SSx2.m1" class="ltx_Math" alttext="n" display="inline"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math> within its gnomon layer</h2>
+
+<div id="Ch0.Sx2.SSx2.p1" class="ltx_para">
+<p class="ltx_p">The size of the gnomon layer that <math id="Ch0.Sx2.SSx2.p1.m1" class="ltx_Math" alttext="n" display="inline"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math> will sit in (how many dots would be in the layer within the diagram) is given by Equation (<a href="#Ch0.E6" title="In The position of 𝑛 within its gnomon layer ‣ Placing any 𝑛 in a 𝑘-polygonal diagram ‣ Desmos Polygonal Number Diagrams" class="ltx_ref"><span class="ltx_text ltx_ref_tag">6</span></a>).</p>
+</div>
+<div id="Ch0.Sx2.SSx2.p2" class="ltx_para">
+<div id="Ch0.E6" class="ltx_equation ltx_eqn_div">
+<span><math id="Ch0.E6.m1" class="ltx_Math" alttext="\text{gsize}\left(n,k\right)=1+(\text{gnomon}\left(n,k\right)-1)\cdot\left(k-2\right)" display="block"><semantics><mrow><mrow><mtext>gsize</mtext><mo>⁢</mo><mrow><mo>(</mo><mi>n</mi><mo>,</mo><mi>k</mi><mo>)</mo></mrow></mrow><mo>=</mo><mrow><mn>1</mn><mo>+</mo><mrow><mrow><mo stretchy="false">(</mo><mrow><mrow><mtext>gnomon</mtext><mo>⁢</mo><mrow><mo>(</mo><mi>n</mi><mo>,</mo><mi>k</mi><mo>)</mo></mrow></mrow><mo>−</mo><mn>1</mn></mrow><mo rspace="0.055em" stretchy="false">)</mo></mrow><mo rspace="0.222em">⋅</mo><mrow><mo>(</mo><mrow><mi>k</mi><mo>−</mo><mn>2</mn></mrow><mo>)</mo></mrow></mrow></mrow></mrow><annotation encoding="application/x-tex">\text{gsize}\left(n,k\right)=1+(\text{gnomon}\left(n,k\right)-1)\cdot\left(k-2\right)</annotation></semantics></math></span>
+            <span class="ltx_tag ltx_tag_equation ltx_align_right">(6)</span>
+            
+          
+</div>
+</div>
+<div id="Ch0.Sx2.SSx2.p3" class="ltx_para">
+<p class="ltx_p">To find the position of the <math id="Ch0.Sx2.SSx2.p3.m1" class="ltx_Math" alttext="n" display="inline"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>th dot within the gnomon, we need to count the number of dots that came before it within that gnomon. To do this we can sum up to <math id="Ch0.Sx2.SSx2.p3.m2" class="ltx_Math" alttext="n-1" display="inline"><semantics><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">n-1</annotation></semantics></math> over a function whose value is <math id="Ch0.Sx2.SSx2.p3.m3" class="ltx_Math" alttext="0" display="inline"><mn>0</mn></math> for all <math id="Ch0.Sx2.SSx2.p3.m4" class="ltx_Math" alttext="i" display="inline"><semantics><mi>i</mi><annotation encoding="application/x-tex">i</annotation></semantics></math> where <math id="Ch0.Sx2.SSx2.p3.m5" class="ltx_Math" alttext="gnomon(i,k)&lt;gnomon(n,k)" display="inline"><semantics><mrow><mrow><mi>g</mi><mo>⁢</mo><mi>n</mi><mo>⁢</mo><mi>o</mi><mo>⁢</mo><mi>m</mi><mo>⁢</mo><mi>o</mi><mo>⁢</mo><mi>n</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>i</mi><mo>,</mo><mi>k</mi><mo stretchy="false">)</mo></mrow></mrow><mo>&lt;</mo><mrow><mi>g</mi><mo>⁢</mo><mi>n</mi><mo>⁢</mo><mi>o</mi><mo>⁢</mo><mi>m</mi><mo>⁢</mo><mi>o</mi><mo>⁢</mo><mi>n</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>n</mi><mo>,</mo><mi>k</mi><mo stretchy="false">)</mo></mrow></mrow></mrow><annotation encoding="application/x-tex">gnomon(i,k)&lt;gnomon(n,k)</annotation></semantics></math>, and whose value is <math id="Ch0.Sx2.SSx2.p3.m6" class="ltx_Math" alttext="1" display="inline"><semantics><mn>1</mn><annotation encoding="application/x-tex">1</annotation></semantics></math> for those <math id="Ch0.Sx2.SSx2.p3.m7" class="ltx_Math" alttext="i" display="inline"><semantics><mi>i</mi><annotation encoding="application/x-tex">i</annotation></semantics></math> where <math id="Ch0.Sx2.SSx2.p3.m8" class="ltx_Math" alttext="gnomon(i,k)=gnomon(n,k)" display="inline"><semantics><mrow><mrow><mi>g</mi><mo>⁢</mo><mi>n</mi><mo>⁢</mo><mi>o</mi><mo>⁢</mo><mi>m</mi><mo>⁢</mo><mi>o</mi><mo>⁢</mo><mi>n</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>i</mi><mo>,</mo><mi>k</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mi>g</mi><mo>⁢</mo><mi>n</mi><mo>⁢</mo><mi>o</mi><mo>⁢</mo><mi>m</mi><mo>⁢</mo><mi>o</mi><mo>⁢</mo><mi>n</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>n</mi><mo>,</mo><mi>k</mi><mo stretchy="false">)</mo></mrow></mrow></mrow><annotation encoding="application/x-tex">gnomon(i,k)=gnomon(n,k)</annotation></semantics></math>. This sum that gives us the ”depth” of <span class="ltx_text ltx_font_italic">n</span> within its gnomon is provided by Equation (<a href="#Ch0.E7" title="In The position of 𝑛 within its gnomon layer ‣ Placing any 𝑛 in a 𝑘-polygonal diagram ‣ Desmos Polygonal Number Diagrams" class="ltx_ref"><span class="ltx_text ltx_ref_tag">7</span></a>).</p>
+</div>
+<div id="Ch0.Sx2.SSx2.p4" class="ltx_para">
+<div id="Ch0.E7" class="ltx_equation ltx_eqn_div">
+<span><math id="Ch0.E7.m1" class="ltx_Math" alttext="\text{gdepth}\left(n,k\right)=\sum_{i=1}^{n}\left(\text{floor}\left(\frac{%
+gnomon\left(i,k\right)}{gnomon\left(n,k\right)}\right)\right)" display="block"><semantics><mrow><mrow><mtext>gdepth</mtext><mo>⁢</mo><mrow><mo>(</mo><mi>n</mi><mo>,</mo><mi>k</mi><mo>)</mo></mrow></mrow><mo rspace="0.111em">=</mo><mrow><munderover><mo movablelimits="false" rspace="0em">∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></munderover><mrow><mo>(</mo><mrow><mtext>floor</mtext><mo>⁢</mo><mrow><mo>(</mo><mfrac><mrow><mi>g</mi><mo>⁢</mo><mi>n</mi><mo>⁢</mo><mi>o</mi><mo>⁢</mo><mi>m</mi><mo>⁢</mo><mi>o</mi><mo>⁢</mo><mi>n</mi><mo>⁢</mo><mrow><mo>(</mo><mi>i</mi><mo>,</mo><mi>k</mi><mo>)</mo></mrow></mrow><mrow><mi>g</mi><mo>⁢</mo><mi>n</mi><mo>⁢</mo><mi>o</mi><mo>⁢</mo><mi>m</mi><mo>⁢</mo><mi>o</mi><mo>⁢</mo><mi>n</mi><mo>⁢</mo><mrow><mo>(</mo><mi>n</mi><mo>,</mo><mi>k</mi><mo>)</mo></mrow></mrow></mfrac><mo>)</mo></mrow></mrow><mo>)</mo></mrow></mrow></mrow><annotation encoding="application/x-tex">\text{gdepth}\left(n,k\right)=\sum_{i=1}^{n}\left(\text{floor}\left(\frac{%
+gnomon\left(i,k\right)}{gnomon\left(n,k\right)}\right)\right)</annotation></semantics></math></span>
+            <span class="ltx_tag ltx_tag_equation ltx_align_right">(7)</span>
+            
+          
+</div>
+</div>
+</div>
+</section>
+</div>
+</section>
+<section id="Ch0.Sx3" class="ltx_section normal">
+<div class="section level1">
+
+<h1 class="ltx_title ltx_title_section">Drawing the diagram</h1>
+
+<div id="Ch0.Sx3.p1" class="ltx_para">
+<p class="ltx_p">For a given <math id="Ch0.Sx3.p1.m1" class="ltx_Math" alttext="n,k\in\mathbb{Z}^{+}" display="inline"><semantics><mrow><mrow><mi>n</mi><mo>,</mo><mi>k</mi></mrow><mo>∈</mo><msup><mi>ℤ</mi><mo>+</mo></msup></mrow><annotation encoding="application/x-tex">n,k\in\mathbb{Z}^{+}</annotation></semantics></math>, <math id="Ch0.Sx3.p1.m2" class="ltx_Math" alttext="k&gt;2" display="inline"><semantics><mrow><mi>k</mi><mo>&gt;</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">k&gt;2</annotation></semantics></math>, the preceding sections tell us which gnomon <math id="Ch0.Sx3.p1.m3" class="ltx_Math" alttext="n" display="inline"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math> will be placed in in a <math id="Ch0.Sx3.p1.m4" class="ltx_Math" alttext="k" display="inline"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>-polygonal diagram, and in which spot along the gnomon.</p>
+</div>
+<div id="Ch0.Sx3.p2" class="ltx_para">
+<p class="ltx_p">To complete the diagram, we need to also determine how much the gnomon is bent at the particular position that <math id="Ch0.Sx3.p2.m1" class="ltx_Math" alttext="n" display="inline"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math> finds itself at. Because the gnomon is a layer in a regular <math id="Ch0.Sx3.p2.m2" class="ltx_Math" alttext="k" display="inline"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>-gon, it bends in increments of the base angle <math id="Ch0.Sx3.p2.m3" class="ltx_Math" alttext="alpha_{k}" display="inline"><semantics><mrow><mi>a</mi><mo>⁢</mo><mi>l</mi><mo>⁢</mo><mi>p</mi><mo>⁢</mo><mi>h</mi><mo>⁢</mo><msub><mi>a</mi><mi>k</mi></msub></mrow><annotation encoding="application/x-tex">alpha_{k}</annotation></semantics></math> that is given by Equation (<a href="#Ch0.E8" title="In Drawing the diagram ‣ Desmos Polygonal Number Diagrams" class="ltx_ref"><span class="ltx_text ltx_ref_tag">8</span></a>).</p>
+</div>
+<div id="Ch0.Sx3.p3" class="ltx_para">
+<div id="Ch0.E8" class="ltx_equation ltx_eqn_div">
+<span><math id="Ch0.E8.m1" class="ltx_Math" alttext="\alpha_{k}=\left(\pi-((k-2)*(\pi/k))\right)" display="block"><semantics><mrow><msub><mi>α</mi><mi>k</mi></msub><mo>=</mo><mrow><mo>(</mo><mrow><mi>π</mi><mo>−</mo><mrow><mo stretchy="false">(</mo><mrow><mrow><mo stretchy="false">(</mo><mrow><mi>k</mi><mo>−</mo><mn>2</mn></mrow><mo rspace="0.055em" stretchy="false">)</mo></mrow><mo rspace="0.222em">∗</mo><mrow><mo stretchy="false">(</mo><mrow><mi>π</mi><mo>/</mo><mi>k</mi></mrow><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>)</mo></mrow></mrow><annotation encoding="application/x-tex">\alpha_{k}=\left(\pi-((k-2)*(\pi/k))\right)</annotation></semantics></math></span>
+          <span class="ltx_tag ltx_tag_equation ltx_align_right">(8)</span>
+          
+        
+</div>
+</div>
+<div id="Ch0.Sx3.p4" class="ltx_para">
+<p class="ltx_p">As we draw a gnomon, we’ll start at the left-most position, which for a given <math id="Ch0.Sx3.p4.m1" class="ltx_Math" alttext="n" display="inline"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math> can be expressed by <math id="Ch0.Sx3.p4.m2" class="ltx_math_unparsed" alttext="(x_{0}(n,k),y_{0}(n,k)" display="inline"><semantics><mrow><mo stretchy="false">(</mo><msub><mi>x</mi><mn>0</mn></msub><mrow><mo stretchy="false">(</mo><mi>n</mi><mo>,</mo><mi>k</mi><mo stretchy="false">)</mo></mrow><mo>,</mo><msub><mi>y</mi><mn>0</mn></msub><mrow><mo stretchy="false">(</mo><mi>n</mi><mo>,</mo><mi>k</mi><mo stretchy="false">)</mo></mrow></mrow><annotation encoding="application/x-tex">(x_{0}(n,k),y_{0}(n,k)</annotation></semantics></math> as defined in (<a href="#Ch0.Ex4" title="In Drawing the diagram ‣ Desmos Polygonal Number Diagrams" class="ltx_ref"><span class="ltx_text ltx_ref_tag">9</span></a>).</p>
+</div>
+<div id="Ch0.Sx3.p5" class="ltx_para">
+<div class="bml-overflow-wrapper">
+<table id="Ch0.Sx4.EGx2" class="ltx_equationgroup ltx_eqn_align ltx_eqn_table">
+
+<tbody id="Ch0.Ex3"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ch0.Ex3.m1" class="ltx_Math" alttext="\displaystyle x_{0}\left(n,k\right)" display="inline"><semantics><mrow><msub><mi>x</mi><mn>0</mn></msub><mo>⁢</mo><mrow><mo>(</mo><mi>n</mi><mo>,</mo><mi>k</mi><mo>)</mo></mrow></mrow><annotation encoding="application/x-tex">\displaystyle x_{0}\left(n,k\right)</annotation></semantics></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ch0.Ex3.m2" class="ltx_Math" alttext="\displaystyle=-\text{gnomon}\left(n,k\right)\cos{(\alpha_{k})}" display="inline"><semantics><mrow><mi></mi><mo>=</mo><mrow><mo>−</mo><mrow><mtext>gnomon</mtext><mo>⁢</mo><mrow><mo>(</mo><mi>n</mi><mo>,</mo><mi>k</mi><mo>)</mo></mrow><mo lspace="0.167em">⁢</mo><mrow><mi>cos</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><msub><mi>α</mi><mi>k</mi></msub><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow></mrow><annotation encoding="application/x-tex">\displaystyle=-\text{gnomon}\left(n,k\right)\cos{(\alpha_{k})}</annotation></semantics></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ch0.Ex4"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ch0.Ex4.m1" class="ltx_Math" alttext="\displaystyle y_{0}\left(n,k\right)" display="inline"><semantics><mrow><msub><mi>y</mi><mn>0</mn></msub><mo>⁢</mo><mrow><mo>(</mo><mi>n</mi><mo>,</mo><mi>k</mi><mo>)</mo></mrow></mrow><annotation encoding="application/x-tex">\displaystyle y_{0}\left(n,k\right)</annotation></semantics></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ch0.Ex4.m2" class="ltx_Math" alttext="\displaystyle=\text{gnomon}\left(n,k\right)\sin{(\alpha_{k})}" display="inline"><semantics><mrow><mi></mi><mo>=</mo><mrow><mtext>gnomon</mtext><mo>⁢</mo><mrow><mo>(</mo><mi>n</mi><mo>,</mo><mi>k</mi><mo>)</mo></mrow><mo lspace="0.167em">⁢</mo><mrow><mi>sin</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><msub><mi>α</mi><mi>k</mi></msub><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow><annotation encoding="application/x-tex">\displaystyle=\text{gnomon}\left(n,k\right)\sin{(\alpha_{k})}</annotation></semantics></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(9)</span></td>
+</tr></tbody>
+</table>
+</div>
+</div>
+<div id="Ch0.Sx3.p6" class="ltx_para">
+<p class="ltx_p">Starting at the initial point <math id="Ch0.Sx3.p6.m1" class="ltx_math_unparsed" alttext="(x_{0}(n,k),y_{0}(n,k)" display="inline"><semantics><mrow><mo stretchy="false">(</mo><msub><mi>x</mi><mn>0</mn></msub><mrow><mo stretchy="false">(</mo><mi>n</mi><mo>,</mo><mi>k</mi><mo stretchy="false">)</mo></mrow><mo>,</mo><msub><mi>y</mi><mn>0</mn></msub><mrow><mo stretchy="false">(</mo><mi>n</mi><mo>,</mo><mi>k</mi><mo stretchy="false">)</mo></mrow></mrow><annotation encoding="application/x-tex">(x_{0}(n,k),y_{0}(n,k)</annotation></semantics></math> for a given <math id="Ch0.Sx3.p6.m2" class="ltx_Math" alttext="n" display="inline"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>, we want to move along the gnomon layer up to the gnomon depth of <math id="Ch0.Sx3.p6.m3" class="ltx_Math" alttext="n" display="inline"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math> (<math id="Ch0.Sx3.p6.m4" class="ltx_Math" alttext="\text{gdepth}(n)" display="inline"><semantics><mrow><mtext>gdepth</mtext><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow></mrow><annotation encoding="application/x-tex">\text{gdepth}(n)</annotation></semantics></math>), bending along the gnomon as required. This process is expressed by the sums in the definitions of <math id="Ch0.Sx3.p6.m5" class="ltx_Math" alttext="x(n,k)" display="inline"><semantics><mrow><mi>x</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>n</mi><mo>,</mo><mi>k</mi><mo stretchy="false">)</mo></mrow></mrow><annotation encoding="application/x-tex">x(n,k)</annotation></semantics></math> and <math id="Ch0.Sx3.p6.m6" class="ltx_Math" alttext="y(n,k)" display="inline"><semantics><mrow><mi>y</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>n</mi><mo>,</mo><mi>k</mi><mo stretchy="false">)</mo></mrow></mrow><annotation encoding="application/x-tex">y(n,k)</annotation></semantics></math> of (<a href="#Ch0.Ex7" title="In Drawing the diagram ‣ Desmos Polygonal Number Diagrams" class="ltx_ref"><span class="ltx_text ltx_ref_tag">10</span></a>).</p>
+</div>
+<div id="Ch0.Sx3.p7" class="ltx_para">
+<div class="bml-overflow-wrapper">
+<table id="Ch0.Sx4.EGx3" class="ltx_equationgroup ltx_eqn_align ltx_eqn_table">
+
+<tbody id="Ch0.Ex5"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ch0.Ex5.m1" class="ltx_Math" alttext="\displaystyle x(n,k)" display="inline"><semantics><mrow><mi>x</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>n</mi><mo>,</mo><mi>k</mi><mo stretchy="false">)</mo></mrow></mrow><annotation encoding="application/x-tex">\displaystyle x(n,k)</annotation></semantics></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ch0.Ex5.m2" class="ltx_Math" alttext="\displaystyle=x_{0}(n,k)-\sum_{j=1}^{\text{gdepth}\left(n\right)-1}\cos\left(%
+\alpha_{k}\cdot\left[\operatorname{ceil}\left(\frac{j}{\text{gsize}\left(n%
+\right)}\left(k-2\right)\right)+1\right]\right)" display="inline"><semantics><mrow><mi></mi><mo>=</mo><mrow><mrow><msub><mi>x</mi><mn>0</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>n</mi><mo>,</mo><mi>k</mi><mo stretchy="false">)</mo></mrow></mrow><mo>−</mo><mrow><mstyle displaystyle="true"><munderover><mo movablelimits="false">∑</mo><mrow><mi>j</mi><mo>=</mo><mn>1</mn></mrow><mrow><mrow><mtext>gdepth</mtext><mo>⁢</mo><mrow><mo>(</mo><mi>n</mi><mo>)</mo></mrow></mrow><mo>−</mo><mn>1</mn></mrow></munderover></mstyle><mrow><mi>cos</mi><mo>⁡</mo><mrow><mo>(</mo><mrow><msub><mi>α</mi><mi>k</mi></msub><mo lspace="0.222em" rspace="0.222em">⋅</mo><mrow><mo>[</mo><mrow><mrow><mi>ceil</mi><mo>⁡</mo><mrow><mo>(</mo><mrow><mstyle displaystyle="true"><mfrac><mi>j</mi><mrow><mtext>gsize</mtext><mo>⁢</mo><mrow><mo>(</mo><mi>n</mi><mo>)</mo></mrow></mrow></mfrac></mstyle><mo>⁢</mo><mrow><mo>(</mo><mrow><mi>k</mi><mo>−</mo><mn>2</mn></mrow><mo>)</mo></mrow></mrow><mo>)</mo></mrow></mrow><mo>+</mo><mn>1</mn></mrow><mo>]</mo></mrow></mrow><mo>)</mo></mrow></mrow></mrow></mrow></mrow><annotation encoding="application/x-tex">\displaystyle=x_{0}(n,k)-\sum_{j=1}^{\text{gdepth}\left(n\right)-1}\cos\left(%
+\alpha_{k}\cdot\left[\operatorname{ceil}\left(\frac{j}{\text{gsize}\left(n%
+\right)}\left(k-2\right)\right)+1\right]\right)</annotation></semantics></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ch0.Ex7"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ch0.Ex7.m1" class="ltx_Math" alttext="\displaystyle y(n,k)" display="inline"><semantics><mrow><mi>y</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>n</mi><mo>,</mo><mi>k</mi><mo stretchy="false">)</mo></mrow></mrow><annotation encoding="application/x-tex">\displaystyle y(n,k)</annotation></semantics></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ch0.Ex7.m2" class="ltx_Math" alttext="\displaystyle=y_{0}(n,k)+\sum_{j=1}^{\text{gdepth}\left(n\right)-1}\sin\left(%
+\alpha_{k}\cdot\left[\operatorname{ceil}\left(\frac{j}{\text{gsize}\left(n%
+\right)}\left(k-2\right)\right)+1\right]\right)" display="inline"><semantics><mrow><mi></mi><mo>=</mo><mrow><mrow><msub><mi>y</mi><mn>0</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>n</mi><mo>,</mo><mi>k</mi><mo stretchy="false">)</mo></mrow></mrow><mo>+</mo><mrow><mstyle displaystyle="true"><munderover><mo movablelimits="false">∑</mo><mrow><mi>j</mi><mo>=</mo><mn>1</mn></mrow><mrow><mrow><mtext>gdepth</mtext><mo>⁢</mo><mrow><mo>(</mo><mi>n</mi><mo>)</mo></mrow></mrow><mo>−</mo><mn>1</mn></mrow></munderover></mstyle><mrow><mi>sin</mi><mo>⁡</mo><mrow><mo>(</mo><mrow><msub><mi>α</mi><mi>k</mi></msub><mo lspace="0.222em" rspace="0.222em">⋅</mo><mrow><mo>[</mo><mrow><mrow><mi>ceil</mi><mo>⁡</mo><mrow><mo>(</mo><mrow><mstyle displaystyle="true"><mfrac><mi>j</mi><mrow><mtext>gsize</mtext><mo>⁢</mo><mrow><mo>(</mo><mi>n</mi><mo>)</mo></mrow></mrow></mfrac></mstyle><mo>⁢</mo><mrow><mo>(</mo><mrow><mi>k</mi><mo>−</mo><mn>2</mn></mrow><mo>)</mo></mrow></mrow><mo>)</mo></mrow></mrow><mo>+</mo><mn>1</mn></mrow><mo>]</mo></mrow></mrow><mo>)</mo></mrow></mrow></mrow></mrow></mrow><annotation encoding="application/x-tex">\displaystyle=y_{0}(n,k)+\sum_{j=1}^{\text{gdepth}\left(n\right)-1}\sin\left(%
+\alpha_{k}\cdot\left[\operatorname{ceil}\left(\frac{j}{\text{gsize}\left(n%
+\right)}\left(k-2\right)\right)+1\right]\right)</annotation></semantics></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(10)</span></td>
+</tr></tbody>
+</table>
+</div>
+</div>
+</div>
+</section>
+<section id="Ch0.Sx4" class="ltx_section normal">
+<div class="section level1">
+
+<h1 class="ltx_title ltx_title_section">Building in Desmos</h1>
+
+<div id="Ch0.Sx4.p1" class="ltx_para">
+<p class="ltx_p">To begin building the polygonal number diagrams in Desmos<cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib2" title="Desmos Graphing Calculator software" class="ltx_ref">2</a>]</cite>, begin with creating sliders for <math id="Ch0.Sx4.p1.m1" class="ltx_Math" alttext="n" display="inline"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math> and <math id="Ch0.Sx4.p1.m2" class="ltx_Math" alttext="k" display="inline"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>, and a sequence <math id="Ch0.Sx4.p1.m3" class="ltx_Math" alttext="N" display="inline"><semantics><mi>N</mi><annotation encoding="application/x-tex">N</annotation></semantics></math> of the integers between <math id="Ch0.Sx4.p1.m4" class="ltx_Math" alttext="1" display="inline"><semantics><mn>1</mn><annotation encoding="application/x-tex">1</annotation></semantics></math> and <math id="Ch0.Sx4.p1.m5" class="ltx_Math" alttext="n" display="inline"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>. The base angle can also be defined.</p>
+</div>
+<div id="Ch0.Sx4.p2" class="ltx_para">
+<div class="ltx_listing ltx_lstlisting ltx_framed ltx_framed_topbottom ltx_listing">
+<div class="ltx_listing_data"><a download="" title="download code" href="data:text/plain;base64,U2xpZGVyICgqJG4kKik7ICgqJDEgXGxlcSBuIFxsZXEgMTAwJCopIHN0ZXA6ICgqMTAqKQpTbGlkZXIgKCokayQqKTsgKCokMiBcbGVxIGsgXGxlcSAxMDAkKikgc3RlcDogKCoxMCopCigqJE49XGxlZnRbMSxcIC4uLlwgLG5cIFxyaWdodF0kKikKKCokYV97bmdsZX09XHBpLShrLTIpXGNkb3RcZnJhY3tccGl9e2t9JCop">⬇</a></div>
+<pre>
+<code id="lstnumberx1" class="ltx_listingline"><span class="ltx_text ltx_lst_identifier">Slider</span><span class="ltx_text ltx_lst_space"> </span><math id="lstnumberx1.m1" class="ltx_Math" alttext="n" display="inline"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>;<span class="ltx_text ltx_lst_space"> </span><math id="lstnumberx1.m2" class="ltx_Math" alttext="1\leq n\leq 100" display="inline"><semantics><mrow><mn>1</mn><mo>≤</mo><mi>n</mi><mo>≤</mo><mn>100</mn></mrow><annotation encoding="application/x-tex">1\leq n\leq 100</annotation></semantics></math><span class="ltx_text ltx_lst_space"> </span><span class="ltx_text ltx_lst_identifier">step</span>:<span class="ltx_text ltx_lst_space"> </span>10
+</code>
+<code id="lstnumberx2" class="ltx_listingline"><span class="ltx_text ltx_lst_identifier">Slider</span><span class="ltx_text ltx_lst_space"> </span><math id="lstnumberx2.m1" class="ltx_Math" alttext="k" display="inline"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>;<span class="ltx_text ltx_lst_space"> </span><math id="lstnumberx2.m2" class="ltx_Math" alttext="2\leq k\leq 100" display="inline"><semantics><mrow><mn>2</mn><mo>≤</mo><mi>k</mi><mo>≤</mo><mn>100</mn></mrow><annotation encoding="application/x-tex">2\leq k\leq 100</annotation></semantics></math><span class="ltx_text ltx_lst_space"> </span><span class="ltx_text ltx_lst_identifier">step</span>:<span class="ltx_text ltx_lst_space"> </span>10
+</code>
+<code id="lstnumberx3" class="ltx_listingline"><math id="lstnumberx3.m1" class="ltx_Math" alttext="N=\left[1,\ ...\ ,n\ \right]" display="inline"><semantics><mrow><mi>N</mi><mo>=</mo><mrow><mo>[</mo><mn>1</mn><mo rspace="0.667em">,</mo><mi mathvariant="normal">…</mi><mo lspace="0.500em">,</mo><mi>n</mi><mo lspace="0.500em">]</mo></mrow></mrow><annotation encoding="application/x-tex">N=\left[1,\ ...\ ,n\ \right]</annotation></semantics></math>
+</code>
+<code id="lstnumberx4" class="ltx_listingline"><math id="lstnumberx4.m1" class="ltx_Math" alttext="a_{ngle}=\pi-(k-2)\cdot\frac{\pi}{k}" display="inline"><semantics><mrow><msub><mi>a</mi><mrow><mi>n</mi><mo>⁢</mo><mi>g</mi><mo>⁢</mo><mi>l</mi><mo>⁢</mo><mi>e</mi></mrow></msub><mo>=</mo><mrow><mi>π</mi><mo>−</mo><mrow><mrow><mo stretchy="false">(</mo><mrow><mi>k</mi><mo>−</mo><mn>2</mn></mrow><mo rspace="0.055em" stretchy="false">)</mo></mrow><mo rspace="0.222em">⋅</mo><mfrac><mi>π</mi><mi>k</mi></mfrac></mrow></mrow></mrow><annotation encoding="application/x-tex">a_{ngle}=\pi-(k-2)\cdot\frac{\pi}{k}</annotation></semantics></math>
+</code></pre>
+</div>
+</div>
+<div id="Ch0.Sx4.p3" class="ltx_para">
+<p class="ltx_p">Chose a variable name that does not correspond to one of the already used variables, and implement equations (<a href="#Ch0.E4" title="In Finding the gnomon for 𝑛 and 𝑘 ‣ Placing any 𝑛 in a 𝑘-polygonal diagram ‣ Desmos Polygonal Number Diagrams" class="ltx_ref"><span class="ltx_text ltx_ref_tag">4</span></a>) and (<a href="#Ch0.E5" title="In Finding the gnomon for 𝑛 and 𝑘 ‣ Placing any 𝑛 in a 𝑘-polygonal diagram ‣ Desmos Polygonal Number Diagrams" class="ltx_ref"><span class="ltx_text ltx_ref_tag">5</span></a>). The value of <math id="Ch0.Sx4.p3.m1" class="ltx_Math" alttext="k" display="inline"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math> is defined globally and does not need to be passed as a paramenter. The value of <math id="Ch0.Sx4.p3.m2" class="ltx_Math" alttext="n" display="inline"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math> is not used directly; instead, the functions will be evaluated using the values of the array <math id="Ch0.Sx4.p3.m3" class="ltx_Math" alttext="N" display="inline"><semantics><mi>N</mi><annotation encoding="application/x-tex">N</annotation></semantics></math>. Here <math id="Ch0.Sx4.p3.m4" class="ltx_Math" alttext="l" display="inline"><semantics><mi>l</mi><annotation encoding="application/x-tex">l</annotation></semantics></math> will be used as the parameter name rather than <math id="Ch0.Sx4.p3.m5" class="ltx_Math" alttext="n" display="inline"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>.</p>
+</div>
+<div id="Ch0.Sx4.p4" class="ltx_para">
+<div class="ltx_listing ltx_lstlisting ltx_framed ltx_framed_topbottom ltx_listing">
+<div class="ltx_listing_data"><a download="" title="download code" href="data:text/plain;base64,KCokZyhsKT0oay00KStcdGV4dHtzcXJ0fSgoay00KV57Mn0rOGwoay0yKSkvKDIoay0yKSkkKik=">⬇</a></div>
+<pre>
+<code id="lstnumberx5" class="ltx_listingline"><math id="lstnumberx5.m1" class="ltx_Math" alttext="g(l)=(k-4)+\text{sqrt}((k-4)^{2}+8l(k-2))/(2(k-2))" display="inline"><semantics><mrow><mrow><mi>g</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>l</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mrow><mo stretchy="false">(</mo><mrow><mi>k</mi><mo>−</mo><mn>4</mn></mrow><mo stretchy="false">)</mo></mrow><mo>+</mo><mrow><mrow><mtext>sqrt</mtext><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><msup><mrow><mo stretchy="false">(</mo><mrow><mi>k</mi><mo>−</mo><mn>4</mn></mrow><mo stretchy="false">)</mo></mrow><mn>2</mn></msup><mo>+</mo><mrow><mn>8</mn><mo>⁢</mo><mi>l</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>k</mi><mo>−</mo><mn>2</mn></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>/</mo><mrow><mo stretchy="false">(</mo><mrow><mn>2</mn><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>k</mi><mo>−</mo><mn>2</mn></mrow><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow><annotation encoding="application/x-tex">g(l)=(k-4)+\text{sqrt}((k-4)^{2}+8l(k-2))/(2(k-2))</annotation></semantics></math>
+</code></pre>
+</div>
+</div>
+<div id="Ch0.Sx4.p5" class="ltx_para">
+<div class="ltx_listing ltx_lstlisting ltx_framed ltx_framed_topbottom ltx_listing">
+<div class="ltx_listing_data"><a download="" title="download code" href="data:text/plain;base64,KCokZ197bm9tb259KGwpID0gXHRleHR7Zmxvb3J9KGcobCkpJCop">⬇</a></div>
+<pre>
+<code id="lstnumberx6" class="ltx_listingline"><math id="lstnumberx6.m1" class="ltx_Math" alttext="g_{nomon}(l)=\text{floor}(g(l))" display="inline"><semantics><mrow><mrow><msub><mi>g</mi><mrow><mi>n</mi><mo>⁢</mo><mi>o</mi><mo>⁢</mo><mi>m</mi><mo>⁢</mo><mi>o</mi><mo>⁢</mo><mi>n</mi></mrow></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>l</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mtext>floor</mtext><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>g</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>l</mi><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow><annotation encoding="application/x-tex">g_{nomon}(l)=\text{floor}(g(l))</annotation></semantics></math>
+</code></pre>
+</div>
+</div>
+<div id="Ch0.Sx4.p6" class="ltx_para">
+<p class="ltx_p">Next, implement the gnomon size and depth functions.</p>
+</div>
+<div id="Ch0.Sx4.p7" class="ltx_para">
+<div class="ltx_listing ltx_lstlisting ltx_framed ltx_framed_topbottom ltx_listing">
+<div class="ltx_listing_data"><a download="" title="download code" href="data:text/plain;base64,KCokIGdfe3NpemV9KGwpPSAxICsoZ197bm9tb259KGwpIC0gMSlcY2RvdChrLTIpJCop">⬇</a></div>
+<pre>
+<code id="lstnumberx7" class="ltx_listingline"><math id="lstnumberx7.m1" class="ltx_Math" alttext="g_{size}(l)=1+(g_{nomon}(l)-1)\cdot(k-2)" display="inline"><semantics><mrow><mrow><msub><mi>g</mi><mrow><mi>s</mi><mo>⁢</mo><mi>i</mi><mo>⁢</mo><mi>z</mi><mo>⁢</mo><mi>e</mi></mrow></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>l</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mn>1</mn><mo>+</mo><mrow><mrow><mo stretchy="false">(</mo><mrow><mrow><msub><mi>g</mi><mrow><mi>n</mi><mo>⁢</mo><mi>o</mi><mo>⁢</mo><mi>m</mi><mo>⁢</mo><mi>o</mi><mo>⁢</mo><mi>n</mi></mrow></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>l</mi><mo stretchy="false">)</mo></mrow></mrow><mo>−</mo><mn>1</mn></mrow><mo rspace="0.055em" stretchy="false">)</mo></mrow><mo rspace="0.222em">⋅</mo><mrow><mo stretchy="false">(</mo><mrow><mi>k</mi><mo>−</mo><mn>2</mn></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow><annotation encoding="application/x-tex">g_{size}(l)=1+(g_{nomon}(l)-1)\cdot(k-2)</annotation></semantics></math>
+</code></pre>
+</div>
+</div>
+<div id="Ch0.Sx4.p8" class="ltx_para">
+<div class="ltx_listing ltx_lstlisting ltx_framed ltx_framed_topbottom ltx_listing">
+<div class="ltx_listing_data"><a download="" title="download code" href="data:text/plain;base64,KCokZ197ZGVwdGh9KGwpPVxzdW1fe2k9MX1ee2x9KFx0ZXh0e2Zsb29yfShnX3tub21vbn0oaSkvZ197bm9tb259KGwpKSkkKik=">⬇</a></div>
+<pre>
+<code id="lstnumberx8" class="ltx_listingline"><math id="lstnumberx8.m1" class="ltx_Math" alttext="g_{depth}(l)=\sum_{i=1}^{l}(\text{floor}(g_{nomon}(i)/g_{nomon}(l)))" display="inline"><semantics><mrow><mrow><msub><mi>g</mi><mrow><mi>d</mi><mo>⁢</mo><mi>e</mi><mo>⁢</mo><mi>p</mi><mo>⁢</mo><mi>t</mi><mo>⁢</mo><mi>h</mi></mrow></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>l</mi><mo stretchy="false">)</mo></mrow></mrow><mo rspace="0.111em">=</mo><mrow><msubsup><mo rspace="0em">∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>l</mi></msubsup><mrow><mo stretchy="false">(</mo><mrow><mtext>floor</mtext><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mrow><mrow><msub><mi>g</mi><mrow><mi>n</mi><mo>⁢</mo><mi>o</mi><mo>⁢</mo><mi>m</mi><mo>⁢</mo><mi>o</mi><mo>⁢</mo><mi>n</mi></mrow></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>i</mi><mo stretchy="false">)</mo></mrow></mrow><mo>/</mo><msub><mi>g</mi><mrow><mi>n</mi><mo>⁢</mo><mi>o</mi><mo>⁢</mo><mi>m</mi><mo>⁢</mo><mi>o</mi><mo>⁢</mo><mi>n</mi></mrow></msub></mrow><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>l</mi><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow><annotation encoding="application/x-tex">g_{depth}(l)=\sum_{i=1}^{l}(\text{floor}(g_{nomon}(i)/g_{nomon}(l)))</annotation></semantics></math>
+</code></pre>
+</div>
+</div>
+<div id="Ch0.Sx4.p9" class="ltx_para">
+<p class="ltx_p">Finally, the equations for the coordinates of each plotted point can be defined based on equations (<a href="#Ch0.Ex4" title="In Drawing the diagram ‣ Desmos Polygonal Number Diagrams" class="ltx_ref"><span class="ltx_text ltx_ref_tag">9</span></a>) and (<a href="#Ch0.Ex7" title="In Drawing the diagram ‣ Desmos Polygonal Number Diagrams" class="ltx_ref"><span class="ltx_text ltx_ref_tag">10</span></a>).</p>
+</div>
+<div id="Ch0.Sx4.p10" class="ltx_para">
+<div class="ltx_listing ltx_lstlisting ltx_framed ltx_framed_topbottom ltx_listing">
+<div class="ltx_listing_data"><a download="" title="download code" href="data:text/plain;base64,KCokeF8wKGwpID0gLWdfe25vbW9ufShsKVxjb3N7KGFfe25nbGV9KX0kKikKKCokeV8wKGwpKSA9IGdfe25vbW9ufShsKVxzaW57KGFfe25nbGV9KX0kKik=">⬇</a></div>
+<pre>
+<code id="lstnumberx9" class="ltx_listingline"><math id="lstnumberx9.m1" class="ltx_Math" alttext="x_{0}(l)=-g_{nomon}(l)\cos{(a_{ngle})}" display="inline"><semantics><mrow><mrow><msub><mi>x</mi><mn>0</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>l</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mo>−</mo><mrow><msub><mi>g</mi><mrow><mi>n</mi><mo>⁢</mo><mi>o</mi><mo>⁢</mo><mi>m</mi><mo>⁢</mo><mi>o</mi><mo>⁢</mo><mi>n</mi></mrow></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>l</mi><mo stretchy="false">)</mo></mrow><mo lspace="0.167em">⁢</mo><mrow><mi>cos</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><msub><mi>a</mi><mrow><mi>n</mi><mo>⁢</mo><mi>g</mi><mo>⁢</mo><mi>l</mi><mo>⁢</mo><mi>e</mi></mrow></msub><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow></mrow><annotation encoding="application/x-tex">x_{0}(l)=-g_{nomon}(l)\cos{(a_{ngle})}</annotation></semantics></math>
+</code>
+<code id="lstnumberx10" class="ltx_listingline"><math id="lstnumberx10.m1" class="ltx_math_unparsed" alttext="y_{0}(l))=g_{nomon}(l)\sin{(a_{ngle})}" display="inline"><semantics><mrow><msub><mi>y</mi><mn>0</mn></msub><mrow><mo stretchy="false">(</mo><mi>l</mi><mo stretchy="false">)</mo></mrow><mo stretchy="false">)</mo><mo>=</mo><mi>g</mi><msub><mi></mi><mrow><mi>n</mi><mo>⁢</mo><mi>o</mi><mo>⁢</mo><mi>m</mi><mo>⁢</mo><mi>o</mi><mo>⁢</mo><mi>n</mi></mrow></msub><mo stretchy="false">(</mo><mi>l</mi><mo rspace="0.167em" stretchy="false">)</mo><mi>sin</mi><mo stretchy="false">(</mo><msub><mi>a</mi><mrow><mi>n</mi><mo>⁢</mo><mi>g</mi><mo>⁢</mo><mi>l</mi><mo>⁢</mo><mi>e</mi></mrow></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">y_{0}(l))=g_{nomon}(l)\sin{(a_{ngle})}</annotation></semantics></math>
+</code></pre>
+</div>
+</div>
+<div id="Ch0.Sx4.p11" class="ltx_para">
+<div class="ltx_listing ltx_lstlisting ltx_framed ltx_framed_topbottom ltx_listing">
+<div class="ltx_listing_data"><a download="" title="download code" href="data:text/plain;base64,KCokeF97cG9seX0obCkgPSB4XzAobCkgLSBcc3VtX3tqPTF9XntnX3tkZXB0aH0obCktMX1cY29zKGFfe25nbGV9XGNkb3QoXG9wZXJhdG9ybmFtZXtjZWlsfSgoe2p9L3tnX3tzaXplfShsKX0pKGstMikpKzEpKSAkKikKCigqJHlfe3BvbHl9KGwpID0geV8wKGwpIC0gXHN1bV97aj0xfV57Z197ZGVwdGh9KGwpLTF9XHNpbihhX3tuZ2xlfVxjZG90KFxvcGVyYXRvcm5hbWV7Y2VpbH0oKHtqfS97Z197c2l6ZX0obCl9KShrLTIpKSsxKSkgJCop">⬇</a></div>
+<pre>
+<code id="lstnumberx11" class="ltx_listingline"><math id="lstnumberx11.m1" class="ltx_Math" alttext="x_{poly}(l)=x_{0}(l)-\sum_{j=1}^{g_{depth}(l)-1}\cos(a_{ngle}\cdot(%
+\operatorname{ceil}(({j}/{g_{size}(l)})(k-2))+1))" display="inline"><semantics><mrow><mrow><msub><mi>x</mi><mrow><mi>p</mi><mo>⁢</mo><mi>o</mi><mo>⁢</mo><mi>l</mi><mo>⁢</mo><mi>y</mi></mrow></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>l</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mrow><msub><mi>x</mi><mn>0</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>l</mi><mo stretchy="false">)</mo></mrow></mrow><mo rspace="0.055em">−</mo><mrow><msubsup><mo>∑</mo><mrow><mi>j</mi><mo>=</mo><mn>1</mn></mrow><mrow><mrow><msub><mi>g</mi><mrow><mi>d</mi><mo>⁢</mo><mi>e</mi><mo>⁢</mo><mi>p</mi><mo>⁢</mo><mi>t</mi><mo>⁢</mo><mi>h</mi></mrow></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>l</mi><mo stretchy="false">)</mo></mrow></mrow><mo>−</mo><mn>1</mn></mrow></msubsup><mrow><mi>cos</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><msub><mi>a</mi><mrow><mi>n</mi><mo>⁢</mo><mi>g</mi><mo>⁢</mo><mi>l</mi><mo>⁢</mo><mi>e</mi></mrow></msub><mo lspace="0.222em" rspace="0.222em">⋅</mo><mrow><mo stretchy="false">(</mo><mrow><mrow><mi>ceil</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mrow><mo stretchy="false">(</mo><mrow><mrow><mi>j</mi><mo>/</mo><msub><mi>g</mi><mrow><mi>s</mi><mo>⁢</mo><mi>i</mi><mo>⁢</mo><mi>z</mi><mo>⁢</mo><mi>e</mi></mrow></msub></mrow><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>l</mi><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>k</mi><mo>−</mo><mn>2</mn></mrow><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>+</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow></mrow><annotation encoding="application/x-tex">x_{poly}(l)=x_{0}(l)-\sum_{j=1}^{g_{depth}(l)-1}\cos(a_{ngle}\cdot(%
+\operatorname{ceil}(({j}/{g_{size}(l)})(k-2))+1))</annotation></semantics></math>
+</code>
+<code id="lstnumberx12" class="ltx_listingline">
+</code>
+<code id="lstnumberx13" class="ltx_listingline"><math id="lstnumberx13.m1" class="ltx_Math" alttext="y_{poly}(l)=y_{0}(l)-\sum_{j=1}^{g_{depth}(l)-1}\sin(a_{ngle}\cdot(%
+\operatorname{ceil}(({j}/{g_{size}(l)})(k-2))+1))" display="inline"><semantics><mrow><mrow><msub><mi>y</mi><mrow><mi>p</mi><mo>⁢</mo><mi>o</mi><mo>⁢</mo><mi>l</mi><mo>⁢</mo><mi>y</mi></mrow></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>l</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mrow><msub><mi>y</mi><mn>0</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>l</mi><mo stretchy="false">)</mo></mrow></mrow><mo rspace="0.055em">−</mo><mrow><msubsup><mo>∑</mo><mrow><mi>j</mi><mo>=</mo><mn>1</mn></mrow><mrow><mrow><msub><mi>g</mi><mrow><mi>d</mi><mo>⁢</mo><mi>e</mi><mo>⁢</mo><mi>p</mi><mo>⁢</mo><mi>t</mi><mo>⁢</mo><mi>h</mi></mrow></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>l</mi><mo stretchy="false">)</mo></mrow></mrow><mo>−</mo><mn>1</mn></mrow></msubsup><mrow><mi>sin</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><msub><mi>a</mi><mrow><mi>n</mi><mo>⁢</mo><mi>g</mi><mo>⁢</mo><mi>l</mi><mo>⁢</mo><mi>e</mi></mrow></msub><mo lspace="0.222em" rspace="0.222em">⋅</mo><mrow><mo stretchy="false">(</mo><mrow><mrow><mi>ceil</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mrow><mo stretchy="false">(</mo><mrow><mrow><mi>j</mi><mo>/</mo><msub><mi>g</mi><mrow><mi>s</mi><mo>⁢</mo><mi>i</mi><mo>⁢</mo><mi>z</mi><mo>⁢</mo><mi>e</mi></mrow></msub></mrow><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>l</mi><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>k</mi><mo>−</mo><mn>2</mn></mrow><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>+</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow></mrow><annotation encoding="application/x-tex">y_{poly}(l)=y_{0}(l)-\sum_{j=1}^{g_{depth}(l)-1}\sin(a_{ngle}\cdot(%
+\operatorname{ceil}(({j}/{g_{size}(l)})(k-2))+1))</annotation></semantics></math>
+</code></pre>
+</div>
+</div>
+<div id="Ch0.Sx4.p12" class="ltx_para">
+<p class="ltx_p">To plot the points, the functions above are applied to the sequence <math id="Ch0.Sx4.p12.m1" class="ltx_Math" alttext="N" display="inline"><semantics><mi>N</mi><annotation encoding="application/x-tex">N</annotation></semantics></math>. The grid and axis can be removed from the plot.</p>
+</div>
+<div id="Ch0.Sx4.p13" class="ltx_para">
+<div class="ltx_listing ltx_lstlisting ltx_framed ltx_framed_topbottom ltx_listing">
+<div class="ltx_listing_data"><a download="" title="download code" href="data:text/plain;base64,KCokKHhfe3BvbHl9KE4pLHlfe3BvbHl9KE4pKSQqKQ==">⬇</a></div>
+<pre>
+<code id="lstnumberx14" class="ltx_listingline"><math id="lstnumberx14.m1" class="ltx_Math" alttext="(x_{poly}(N),y_{poly}(N))" display="inline"><semantics><mrow><mo stretchy="false">(</mo><mrow><msub><mi>x</mi><mrow><mi>p</mi><mo>⁢</mo><mi>o</mi><mo>⁢</mo><mi>l</mi><mo>⁢</mo><mi>y</mi></mrow></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>N</mi><mo stretchy="false">)</mo></mrow></mrow><mo>,</mo><mrow><msub><mi>y</mi><mrow><mi>p</mi><mo>⁢</mo><mi>o</mi><mo>⁢</mo><mi>l</mi><mo>⁢</mo><mi>y</mi></mrow></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>N</mi><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(x_{poly}(N),y_{poly}(N))</annotation></semantics></math>
+</code></pre>
+</div>
+</div>
+<div id="Ch0.Sx4.p14" class="ltx_para">
+<p class="ltx_p">A completed implementation of these instructions can be found here:</p>
+</div>
+<div id="Ch0.Sx4.p15" class="ltx_para ltx_noindent">
+<p class="ltx_p"><span class="ltx_ref ltx_nolink ltx_url ltx_font_typewriter ltx_ref_self">https://www.desmos.com/calculator/cz80t85moz</span>.</p>
+</div>
+</div>
+</section>
+<section id="bib" class="ltx_bibliography normal">
+<div class="section level1">
+
+<h1 class="ltx_title ltx_title_bibliography">Bibliography</h1>
+
+<ul id="bib.L1" class="ltx_biblist">
+<li id="bib.bib1" class="ltx_bibitem ltx_bib_book">
+<span class="ltx_tag ltx_bib_key ltx_role_refnum ltx_tag_bibitem">[1]</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_author">J. H. Conway and R. Guy</span><span class="ltx_text ltx_bib_year"> (1998)</span>
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">The book of numbers</span>.
+</span>
+<span class="ltx_bibblock"> <span class="ltx_text ltx_bib_publisher">Springer Science &amp; Business Media</span>.
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a href="#Ch0.Sx1.p1" title="Polygonal numbers ‣ Desmos Polygonal Number Diagrams" class="ltx_ref"><span class="ltx_text ltx_ref_title">Polygonal numbers</span></a>.
+</span>
+</li>
+<li id="bib.bib2" class="ltx_bibitem ltx_bib_misc">
+<span class="ltx_tag ltx_bib_key ltx_role_refnum ltx_tag_bibitem">[2]</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_author">Desmos</span>
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">Desmos Graphing Calculator software</span>.
+</span>
+<span class="ltx_bibblock">Note: <span class="ltx_text ltx_bib_note"><span class="ltx_ref ltx_nolink ltx_url ltx_font_typewriter ltx_ref_self">https://www.desmos.com/</span></span>
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a href="#Ch0.Sx4.p1" title="Building in Desmos ‣ Desmos Polygonal Number Diagrams" class="ltx_ref"><span class="ltx_text ltx_ref_title">Building in Desmos</span></a>.
+</span>
+</li>
+</ul>
+</div>
+</section>
 </div>
 </section>
 </div>
 </div>
 </div>
-<a href="Ch0.Sx1.html" class="navigation navigation-next" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
 </div>
 </div>
 <script src="bookml/gitbook/js/app.min.js"></script>
